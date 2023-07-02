@@ -25,6 +25,8 @@
     <script src="{{asset('js/sweetalert.all.min.js')}}"></script>
 
     <link href="{{asset('css/custom.css')}}" rel="stylesheet">
+    <script src="{{asset('js/custom2.js')}}"></script>
+
 
   </head>
     <body class="{{ $class ?? '' }}">

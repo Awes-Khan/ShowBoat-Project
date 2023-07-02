@@ -49,7 +49,7 @@ class AdminDashboardController extends Controller
         // Step 1: Validate the form data
         $request->validate([
             'profile_name' => 'required',
-            'profile_image' => 'required|image|mimes:png,jpg',
+            // 'profile_image' => 'required|image|mimes:png,jpg',
             'email' => 'required|email',
             'address' => 'nullable',
             'pan_card_number' => 'required',

@@ -83,4 +83,25 @@
             </div>
         </div>
     </div>
+    <script>
+        $(document).ready(function() {
+    // Preview avatar image
+    $('#previewContainer').html('<img src="/default-avatar.png" class="img-thumbnail" style="width: 100px;border-radius:100px;padding-top:0px;    margin-top: -10px;" alt="Avatar Preview">');
+    $('#avatarInput').change(function() {
+      var file = $(this).prop('files')[0];
+  
+      if (file) {
+        var reader = new FileReader();
+  
+        reader.onload = function(e) {
+          $('#previewContainer').html('<img src="' + e.target.result + '" class="img-thumbnail" style="width: 100px;height: 100px;border-radius:500px;padding-top:0px;margin-top: -10px;"alt="Avatar Preview">');
+        };
+  
+        reader.readAsDataURL(file);
+      }
+    });
+    }  );
+        
+        // createPageImageHandler();
+    </script>
 @endsection

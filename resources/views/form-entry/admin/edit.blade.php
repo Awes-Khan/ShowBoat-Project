@@ -13,8 +13,9 @@
                         <p class="card-category"> Here is the list of form entries performed.</p>
                       </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('form-entry.store') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('admin.form-entry.update', $formEntry->id) }}" enctype="multipart/form-data">
                             @csrf
+                            @method('PUT')
                     <br>
                     <br>
                             <div class="form-row ">
@@ -62,7 +63,7 @@
                             <div class="form-row">
                                 <div class="form-group col">
                                     <label for="pan_card_number">{{ __('PAN Card Number') }}</label>
-                                    <input type="text" name="pan_card_number" id="pan_card_number" value="{{ $formEntry->pan_card_number }}" maxlength="10" class="form-control" required>
+                                    <input type="text" name="pan_card_number" id="pan_card_number" value="{{ $formEntry->pan_card_number }}" maxlength="10" minlength="10" class="form-control" required>
                                     @error('pan_card_number')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -70,19 +71,40 @@
 
                                 <div class="form-group col">
                                     <label for="aadhar_card_number">{{ __('Aadhar Card Number') }}</label>
-                                    <input type="text" name="aadhar_card_number" id="aadhar_card_number" value="{{ $formEntry->aadhar_card_number }}" maxlength="12" class="form-control" required>
+                                    <input type="text" name="aadhar_card_number" id="aadhar_card_number" value="{{ $formEntry->aadhar_card_number }}" minlength="12" maxlength="12" class="form-control" required>
                                     @error('aadhar_card_number')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
+                            <button type="submit" class="btn btn-primary">{{ __('Update') }}</button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+    $(document).ready(function() {
+        // Preview avatar image
+        $('#previewContainer').html('<img src="{{asset("/storage/".($formEntry->profile_image ?? "/default-avatar.png"))}}" class="img-thumbnail" style="width: 100px;height: 100px;border-radius:100px;padding-top:0px;    margin-top: -10px;" alt="Avatar Preview">');
+        $('#avatarInput').change(function() {
+          var file = $(this).prop('files')[0];
+      
+          if (file) {
+            var reader = new FileReader();
+      
+            reader.onload = function(e) {
+              $('#previewContainer').html('<img src="' + e.target.result + '" class="img-thumbnail" style="width: 100px;height: 100px;border-radius:500px;padding-top:0px;margin-top: -10px;"alt="Avatar Preview">');
+            };
+      
+            reader.readAsDataURL(file);
+          }
+        });
+    });
+
+        // editPageImageHandler();
+        </script>
 @endsection
 
 

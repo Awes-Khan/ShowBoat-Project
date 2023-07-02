@@ -1,9 +1,4 @@
 <div class="sidebar" data-color="azure" data-background-color="white" data-image="{{ asset('material') }}/img/sidebar-1.jpg">
-  <!--
-      Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
-
-      Tip 2: you can also add an image using data-image tag
-  -->
   <div class="logo">
     <a href="#" class="simple-text logo-normal">
       {{ __('ShowBoat') }}
@@ -28,48 +23,22 @@
           <ul class="nav">
             <li class="nav-item{{ $activePage == 'new-entry' ? ' active' : '' }}">
               <a class="nav-link" href="{{ route('form-entry.create') }}">
-                <span class="sidebar-mini"> NE </span>
+                <i class="material-icons">content_paste</i>
+
+                {{-- <span class="sidebar-mini"> content_paste </span> --}}
                 <span class="sidebar-normal">{{ __('New Entry') }} </span>
               </a>
             </li>
             <li class="nav-item{{ $activePage == 'edit-entry' ? ' active' : '' }}">
-              <a class="nav-link" href="{{ route('user.index') }}">
-                <span class="sidebar-mini"> UM </span>
+              <a class="nav-link" href="#">
+                {{-- <span class="sidebar-mini"> UM </span> --}}
+                <i class="material-icons">library_books</i>
+
                 <span class="sidebar-normal"> {{ __('Edit Entry') }} </span>
               </a>
             </li>
           </ul>
         </div>
-      </li>
-      <li class="nav-item{{ $activePage == 'table' ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('table') }}">
-          <i class="material-icons">content_paste</i>
-            <p>{{ __('Table List') }}</p>
-        </a>
-      </li>
-      <li class="nav-item{{ $activePage == 'typography' ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('typography') }}">
-          <i class="material-icons">library_books</i>
-            <p>{{ __('Typography') }}</p>
-        </a>
-      </li>
-      <li class="nav-item{{ $activePage == 'icons' ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('icons') }}">
-          <i class="material-icons">bubble_chart</i>
-          <p>{{ __('Icons') }}</p>
-        </a>
-      </li>
-      <li class="nav-item{{ $activePage == 'notifications' ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('notifications') }}">
-          <i class="material-icons">notifications</i>
-          <p>{{ __('Notifications') }}</p>
-        </a>
-      </li>
-      <li class="nav-item{{ $activePage == 'notifications' ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('notifications') }}">
-          <i class="material-icons">notifications</i>
-          <p>{{ __('New Entry') }}</p>
-        </a>
       </li>
     </ul>
   </div>

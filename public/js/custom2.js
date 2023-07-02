@@ -16,41 +16,6 @@ function showNotification(from, align, message='successfull completed',type='suc
       }
     });
   };
-  function confirmDelete(formEntryId) {
-    // alert("insert");
-    console.log("confiming");
-    Swal.fire({
-        title: 'Are you sure?',
-        text: 'Once deleted, you will not be able to recover this form entry.',
-        type: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#d33',
-        cancelButtonColor: '#3085d6',
-        confirmButtonText: 'Yes, delete it!'
-    }).then((result) => {
-        // console.log(result, result.value);
-        if (result.value) {
-            // console.log("submitting");
-            document.getElementById('delete-form-' + formEntryId).submit();
-            // console.log("submitted");
-            $.notify({
-                icon: "add_alert",
-                message: "Entry Deleted Successfully"
-          
-              }, {
-                type: 'success',
-                timer: 3000,
-                placement: {
-                  from: 'top',
-              align: 'left'
-                }
-              });
-          
-        }
-    });
-    
-    // console.log("Terminated");
-}
 
 
 
