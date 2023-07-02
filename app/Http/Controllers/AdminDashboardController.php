@@ -99,6 +99,3 @@ class AdminDashboardController extends Controller
         return redirect()->route('admin.dashboard')->with('success', 'Form entry deleted successfully.');
     }
 }
-
-
-?>
