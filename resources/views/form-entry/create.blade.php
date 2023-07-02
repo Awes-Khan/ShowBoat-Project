@@ -68,7 +68,7 @@
                                 <div class="form-group col">
                                     <label for="pan_card_number">{{ __('PAN Card Number') }}</label>
                                     <input type="text" name="pan_card_number" id="pan_card_number"
-                                        value="{{ old('pan_card_number') }}" maxlength="10" class="form-control" required>
+                                        value="{{ old('pan_card_number') }}" minlength="10" maxlength="10" class="form-control" required>
                                     @error('pan_card_number')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -77,7 +77,7 @@
                                 <div class="form-group col">
                                     <label for="aadhar_card_number">{{ __('Aadhar Card Number') }}</label>
                                     <input type="text" name="aadhar_card_number" id="aadhar_card_number"
-                                        value="{{ old('aadhar_card_number') }}" maxlength="12" class="form-control"
+                                        value="{{ old('aadhar_card_number') }}" minlength="12" maxlength="12" class="form-control"
                                         required>
                                     @error('aadhar_card_number')
                                         <span class="text-danger">{{ $message }}</span>
