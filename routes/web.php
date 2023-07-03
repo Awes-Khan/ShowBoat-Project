@@ -1,11 +1,12 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\FormEntryController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +23,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
 // Form Entry Routes
 Route::get('/form-entry/create', [FormEntryController::class, 'create'])->name('form-entry.create');
 
@@ -30,18 +30,16 @@ Route::post('/form-entry/store', [FormEntryController::class, 'store'])->name('f
 
 Route::get('/admin/form-entries', [AdminDashboardController::class, 'getFormEntries'])->name('admin.form-entries');
 
-
 Auth::routes();
 
-Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home')->middleware('auth');
+Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware('auth');
 
 Route::group(['middleware' => 'auth'], function () {
-	Route::resource('user', UserController::class, ['except' => ['show']]);
-	Route::get('profile', ['as' => 'profile.edit', 'uses' => [ProfileController::class , 'edit']]);
-	Route::put('profile', ['as' => 'profile.update', 'uses' => [ProfileController::class , 'update']]);
-	Route::put('profile/password', ['as' => 'profile.password', 'uses' => [ProfileController::class , 'password']]);
+    Route::resource('user', UserController::class, ['except' => ['show']]);
+    Route::get('profile', ['as' => 'profile.edit', 'uses' => [ProfileController::class, 'edit']]);
+    Route::put('profile', ['as' => 'profile.update', 'uses' => [ProfileController::class, 'update']]);
+    Route::put('profile/password', ['as' => 'profile.password', 'uses' => [ProfileController::class, 'password']]);
 });
-
 
 // Admin Dashboard Routes
 Route::middleware('auth')->group(function () {
@@ -52,5 +50,3 @@ Route::middleware('auth')->group(function () {
     Route::put('/admin/form-entry/{id}', [AdminDashboardController::class, 'update'])->name('admin.form-entry.update');
     Route::delete('/admin/form-entry/{id}', [AdminDashboardController::class, 'delete'])->name('admin.form-entry.delete');
 });
-
-

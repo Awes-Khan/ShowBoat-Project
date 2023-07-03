@@ -1,3 +1,8 @@
+@php
+    $user = Auth::user();
+    $isAdmin = $user->email == 'awes@example.com';
+@endphp
+
 <div class="sidebar" data-color="azure" data-background-color="white"
     data-image="{{ asset('material') }}/img/sidebar-1.jpg">
     <div class="logo">
@@ -7,12 +12,14 @@
     </div>
     <div class="sidebar-wrapper">
         <ul class="nav">
-            <li class="nav-item{{ $activePage == 'dashboard' ? ' active' : '' }}">
-                <a class="nav-link" href="{{ route('admin.dashboard') }}">
-                    <i class="material-icons">dashboard</i>
-                    <p>{{ __('Dashboard') }}</p>
-                </a>
-            </li>
+            @if ($isAdmin)
+                <li class="nav-item{{ $activePage == 'dashboard' ? ' active' : '' }}">
+                    <a class="nav-link" href="{{ route('admin.dashboard') }}">
+                        <i class="material-icons">dashboard</i>
+                        <p>{{ __('Dashboard') }}</p>
+                    </a>
+                </li>
+            @endif
             <li class="nav-item {{ $activePage == 'profile' || $activePage == 'user-management' ? ' active' : '' }}">
                 <a class="nav-link" data-toggle="collapse" href="#laravelExample" aria-expanded="true">
                     <i><img style="width:25px" src="{{ asset('material') }}/img/laravel.svg"></i>
@@ -30,14 +37,16 @@
                                 <span class="sidebar-normal">{{ __('New Entry') }} </span>
                             </a>
                         </li>
-                        <li class="nav-item{{ $activePage == 'edit-entry' ? ' active' : '' }}">
-                            <a class="nav-link" href="#">
-                                {{-- <span class="sidebar-mini"> UM </span> --}}
-                                <i class="material-icons">library_books</i>
+                        @if ($isAdmin)
+                            <li class="nav-item{{ $activePage == 'edit-entry' ? ' active' : '' }}">
+                                <a class="nav-link" href="#">
+                                    {{-- <span class="sidebar-mini"> UM </span> --}}
+                                    <i class="material-icons">library_books</i>
 
-                                <span class="sidebar-normal"> {{ __('Edit Entry') }} </span>
-                            </a>
-                        </li>
+                                    <span class="sidebar-normal"> {{ __('Edit Entry') }} </span>
+                                </a>
+                            </li>
+                        @endif
                     </ul>
                 </div>
             </li>

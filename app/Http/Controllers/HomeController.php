@@ -21,6 +21,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return redirect()->route('admin.dashboard');
+        return redirect()->route('form-entry.create');
     }
 }

@@ -2,6 +2,13 @@
 
 @section('title', 'Dashboard')
 
+@php
+    $user = Auth::user();
+    $isAdmin = $user->email == 'awes@example.com';
+    if ($isAdmin == false) {
+        redirect()->route(form - entry . create);
+    }
+@endphp
 @section('content')
     <div class="content">
         <div class="container-fluid">
