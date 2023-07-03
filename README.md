@@ -49,6 +49,12 @@ php artisan migrate
 php artisan db:seed
 ```
 
+8. Link Storage folder by creating sylinks in public folder:
+
+```
+php artisan storage:link
+```
+
 ## Usage
 
 1. Start the local development server:

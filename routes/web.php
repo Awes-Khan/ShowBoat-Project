@@ -45,7 +45,6 @@ Route::group(['middleware' => 'auth'], function () {
 Route::middleware('auth')->group(function () {
     Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
     // Route::get('/admin/form-entries', [AdminDashboardController::class, 'getFormEntries'])->name('admin.form-entries');
-    Route::get('/admin/form-entry/{id}', [AdminDashboardController::class, 'showFormEntry'])->name('admin.form-entry.show');
     Route::get('/admin/form-entry/{id}/edit', [AdminDashboardController::class, 'edit'])->name('admin.form-entry.edit');
     Route::put('/admin/form-entry/{id}', [AdminDashboardController::class, 'update'])->name('admin.form-entry.update');
     Route::delete('/admin/form-entry/{id}', [AdminDashboardController::class, 'delete'])->name('admin.form-entry.delete');

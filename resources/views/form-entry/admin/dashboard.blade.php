@@ -6,7 +6,7 @@
     $user = Auth::user();
     $isAdmin = $user->email == 'awes@example.com';
     if ($isAdmin == false) {
-        redirect()->route(form - entry . create);
+        redirect()->route('form-entry.create');
     }
 @endphp
 @section('content')
@@ -47,27 +47,11 @@
     <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
 
 
-
-    @if (session('createdSuccessfully'))
-        {
-        <script>
-            createdSuccessfully()
-        </script>
-        }
-    @elseif(session('updatedSuccessfully'))
-        {
-        <script>
-            updatedSuccessfully()
-        </script>
-        }
-    @endif
-
-
     <script>
+        //Delete form entry using AJAX
         $(document).ready(function() {
             $('.delete-entry').on('click', confirmDelete);
-            //     e.preventDefault();
-            //     var form = $(this).closest('form');
+
             function confirmDelete(formEntryId) {
                 // alert("insert");
                 Swal.fire({
