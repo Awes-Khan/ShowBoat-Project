@@ -74,7 +74,7 @@ http://localhost:8000
 4. To access the admin dashboard, go to the following URL:
 
 ```
-http://localhost:8000/admin/login
+http://localhost:8000/login
 ```
 
 Use the admin credentials:  
